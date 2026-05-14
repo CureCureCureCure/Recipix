@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipix — Recipe</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-logo">Recipix</div>
+        <div class="nav-links">
+            <a href="/home">Home</a>
+            <a href="/favourites">Saved</a>
+            <a href="/account">Account</a>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <div class="page-content">
+
+        <div class="recipe-detail-topbar">
+            <a href="/favourites" id="back-favourites" class="back-link" style="display:none;">← Back to favourites</a>
+            <a href="/results" id="back-results" class="back-link" style="display:none;">← Back to results</a>
+            <a href="/home" id="back-home" class="back-link" style="display:none;">← Back to home</a>
+            <button class="favourite-btn" id="favourite-btn" onclick="toggleFavourite()">♡ Save</button>
+        </div>
+
+        <div class="recipe-detail-layout">
+
+            <div class="recipe-detail-left">
+                <img id="recipe-image" class="recipe-detail-img" src="" alt="">
+                <div id="recipe-image-placeholder" class="recipe-detail-img-placeholder" style="display:none;">🍽</div>
+
+                <h1 id="recipe-title" class="recipe-detail-title"></h1>
+
+                <div class="recipe-detail-meta">
+                    <span id="recipe-time"></span>
+                    <span id="recipe-difficulty"></span>
+                </div>
+
+                <div class="rating-section">
+                    <p class="rating-label">Your rating</p>
+                    <div class="star-row" id="star-row">
+                        <span class="star" data-value="1" onclick="submitRating(1)">★</span>
+                        <span class="star" data-value="2" onclick="submitRating(2)">★</span>
+                        <span class="star" data-value="3" onclick="submitRating(3)">★</span>
+                        <span class="star" data-value="4" onclick="submitRating(4)">★</span>
+                        <span class="star" data-value="5" onclick="submitRating(5)">★</span>
+                    </div>
+                    <p class="rating-feedback" id="rating-feedback"></p>
+                    <p class="rating-average" id="rating-average"></p>
+                </div>
+
+                <div class="ingredients-heading-row">
+                    <h2 class="recipe-section-heading">Ingredients</h2>
+                    <button class="metric-toggle-btn" id="metric-toggle" onclick="toggleMetric()">Convert to metric</button>
+                </div>
+                <ul id="recipe-ingredients" class="recipe-ingredients-list"></ul>
+            </div>
+
+            <div class="recipe-detail-right">
+                <h2 class="recipe-section-heading">Instructions</h2>
+                <ol id="recipe-steps" class="recipe-steps-list"></ol>
+
+                <h2 class="recipe-section-heading">Nutritional Info</h2>
+                <div id="recipe-nutrition" class="recipe-nutrition-grid"></div>
+            </div>
+
+        </div>
+
+        <div id="error-message" class="error-msg" style="display:none;"></div>
+
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="/home" class="nav-item">
+            <div class="nav-icon">⌂</div>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item upload-item">
+            <div class="nav-icon">+</div>
+            <span>Upload</span>
+        </a>
+        <a href="/favourites" class="nav-item">
+            <div class="nav-icon">♡</div>
+            <span>Saved</span>
+        </a>
+        <a href="/account" class="nav-item">
+            <div class="nav-icon">👤</div>
+            <span>Account</span>
+        </a>
+    </nav>
+
+    <script src="/static/js/recipe.js"></script>
+</body>
+</html>

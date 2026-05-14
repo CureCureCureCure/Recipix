@@ -1,0 +1,3 @@
+.env
+recipix.db
+# How do i prevent the above files from beinguplosaded to git? is putting them in this .gitiginore file enough?

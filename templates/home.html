@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipix — Home</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-logo">Recipix</div>
+        <div class="nav-links">
+            <a href="/home" class="active">Home</a>
+            <a href="/favourites">Saved</a>
+            <a href="/account">Account</a>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <div class="page-content">
+
+        <input type="file" id="file-input" accept=".jpg,.jpeg,.png" style="display:none">
+
+        <div class="upload-cta" onclick="document.getElementById('file-input').click()">
+            <div class="upload-icon">📷</div>
+            <p>Upload a photo of your ingredients to find recipes</p>
+            <button class="upload-btn" onclick="event.stopPropagation(); document.getElementById('file-input').click()">Upload Ingredients</button>
+        </div>
+
+        <div id="upload-error" class="error-msg" style="display:none;"></div>
+        <div id="upload-loading" class="loading-msg" style="display:none;">Uploading image...</div>
+
+        <div class="section-header">
+            <h2>Favourites</h2>
+            <a href="/favourites">View all →</a>
+        </div>
+        <div class="recipe-grid" id="favourites-grid">
+            <p class="empty-state">No saved recipes yet</p>
+        </div>
+
+        <div class="section-header">
+            <h2>Recent Recipes</h2>
+        </div>
+        <div class="recipe-grid" id="recent-grid">
+            <p class="empty-state">Upload ingredients to get started</p>
+        </div>
+
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="/home" class="nav-item active">
+            <div class="nav-icon">⌂</div>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item upload-item" onclick="event.preventDefault(); document.getElementById('file-input').click()">
+            <div class="nav-icon">+</div>
+            <span>Upload</span>
+        </a>
+        <a href="/favourites" class="nav-item">
+            <div class="nav-icon">♡</div>
+            <span>Saved</span>
+        </a>
+        <a href="/account" class="nav-item">
+            <div class="nav-icon">👤</div>
+            <span>Account</span>
+        </a>
+    </nav>
+
+    <script src="/static/js/home.js"></script>
+</body>
+</html>

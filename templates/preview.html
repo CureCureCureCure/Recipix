@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipix — Preview</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-logo">Recipix</div>
+        <div class="nav-links">
+            <a href="/home">Home</a>
+            <a href="/favourites">Saved</a>
+            <a href="/account">Account</a>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <div class="page-content">
+
+        <!-- Mobile header row -->
+        <div class="preview-mobile-header">
+            <span class="page-title">Image Preview</span>
+            <span class="preview-file-info-mobile" id="file-info-mobile"></span>
+        </div>
+
+        <!-- Desktop title -->
+        <h1 class="page-title preview-desktop-title">Image Preview</h1>
+
+        <div class="preview-layout">
+
+            <!-- Left: image -->
+            <div class="preview-left">
+                <div class="preview-image-box">
+                    <img id="preview-image" class="preview-img" src="" alt="">
+                    <div id="preview-placeholder" class="preview-placeholder" style="display:none;">
+                        No image found — <a href="/upload">go back and upload one</a>
+                    </div>
+                </div>
+                <p class="preview-file-info-desktop" id="file-info-desktop"></p>
+            </div>
+
+            <!-- Right: actions -->
+            <div class="preview-right">
+                <p class="preview-proceed-text">Do you want to proceed with this image?</p>
+                <button class="btn-primary preview-btn" onclick="analyseIngredients()">Confirm and scan</button>
+                <button class="btn-secondary preview-btn" onclick="retake()">Choose different image</button>
+            </div>
+
+        </div>
+
+        <div id="error-message" class="error-msg" style="display:none;"></div>
+        <div id="loading" class="loading-msg" style="display:none;">Detecting ingredients...</div>
+
+        <!-- Mobile action block (below image) -->
+        <div class="preview-mobile-actions">
+            <p class="preview-proceed-text">Do you want to proceed with this image?</p>
+            <button class="btn-primary preview-btn" onclick="analyseIngredients()">Confirm and scan</button>
+            <button class="btn-secondary preview-btn" onclick="retake()">Choose different image</button>
+        </div>
+
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="/home" class="nav-item">
+            <div class="nav-icon">⌂</div>
+            <span>Home</span>
+        </a>
+        <a href="/upload" class="nav-item upload-item active">
+            <div class="nav-icon">+</div>
+            <span>Upload</span>
+        </a>
+        <a href="/favourites" class="nav-item">
+            <div class="nav-icon">♡</div>
+            <span>Saved</span>
+        </a>
+        <a href="/account" class="nav-item">
+            <div class="nav-icon">👤</div>
+            <span>Account</span>
+        </a>
+    </nav>
+
+    <script src="/static/js/preview.js"></script>
+</body>
+</html>

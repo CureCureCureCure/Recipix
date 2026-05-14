@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipix — Account</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <nav class="top-nav">
+        <div class="nav-logo">Recipix</div>
+        <div class="nav-links">
+            <a href="/home">Home</a>
+            <a href="/favourites">Saved</a>
+            <a href="/account" class="active">Account</a>
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <div class="page-content">
+        <h1 class="page-title">Account</h1>
+
+        <div id="loading" class="loading-msg">Loading your preferences...</div>
+        <div id="error-message" class="error-msg" style="display:none;"></div>
+        <div id="success-message" class="success-msg" style="display:none;"></div>
+
+        <div id="account-sections" style="display:none;">
+
+            <!-- Preferences -->
+            <div class="account-section">
+                <h2 class="account-section-title">Cooking Preferences</h2>
+
+                <div class="pref-row">
+                    <label class="pref-label">Max cook time (minutes)</label>
+                    <input type="number" class="pref-input" id="pref-cookingTime" min="1" placeholder="e.g. 30">
+                    <button class="pref-save-btn" onclick="savePreference('cookingTime')">Save</button>
+                </div>
+
+                <div class="pref-row">
+                    <label class="pref-label">Difficulty</label>
+                    <select class="pref-input" id="pref-difficulty">
+                        <option value="">No preference</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Advanced">Advanced</option>
+                    </select>
+                    <button class="pref-save-btn" onclick="savePreference('difficulty')">Save</button>
+                </div>
+
+                <div class="pref-row">
+                    <label class="pref-label">Calorie range</label>
+                    <div class="calorie-range-inputs">
+                        <input type="number" class="pref-input calorie-input" id="pref-calorieMin" min="0" placeholder="Min">
+                        <span class="calorie-dash">–</span>
+                        <input type="number" class="pref-input calorie-input" id="pref-calorieMax" min="0" placeholder="Max">
+                    </div>
+                    <button class="pref-save-btn" onclick="savePreference('calories')">Save</button>
+                </div>
+
+                <div class="pref-row pref-row-equipment">
+                    <label class="pref-label">Equipment available</label>
+                    <div class="equipment-section">
+                        <div class="chip-row" id="equipment-chip-row"></div>
+                        <div class="add-ingredient-row">
+                            <input type="text" class="add-ingredient-input" id="equipment-input" placeholder="e.g. wok, pressure cooker...">
+                            <button class="add-ingredient-btn" onclick="addEquipment()">+ Add</button>
+                        </div>
+                    </div>
+                    <button class="pref-save-btn" onclick="savePreference('equipment')">Save</button>
+                </div>
+            </div>
+
+            <!-- Dietary requirements -->
+            <div class="account-section">
+                <h2 class="account-section-title">Dietary Requirements</h2>
+                <p class="account-section-subtitle">Tap to toggle. Active requirements are highlighted.</p>
+                <div class="dietary-toggles" id="dietary-toggles">
+                    <button class="dietary-btn" data-value="halal" onclick="toggleDietary('halal')">Halal</button>
+                    <button class="dietary-btn" data-value="vegetarian" onclick="toggleDietary('vegetarian')">Vegetarian</button>
+                    <button class="dietary-btn" data-value="vegan" onclick="toggleDietary('vegan')">Vegan</button>
+                    <button class="dietary-btn" data-value="gluten-free" onclick="toggleDietary('gluten-free')">Gluten-Free</button>
+                    <button class="dietary-btn" data-value="dairy-free" onclick="toggleDietary('dairy-free')">Dairy-Free</button>
+                </div>
+            </div>
+
+            <!-- Allergies -->
+            <div class="account-section">
+                <h2 class="account-section-title">Allergies</h2>
+                <p class="account-section-subtitle">Recipes containing these ingredients will be excluded from your results.</p>
+
+                <div class="chip-row" id="allergy-chip-row"></div>
+
+                <div class="add-ingredient-row">
+                    <input type="text" class="add-ingredient-input" id="allergy-input" placeholder="Add an allergen...">
+                    <button class="add-ingredient-btn" onclick="addAllergy()">+ Add</button>
+                </div>
+            </div>
+
+            <!-- Delete account -->
+            <div class="account-section account-section-danger">
+                <h2 class="account-section-title danger-title">Delete Account</h2>
+                <p class="account-section-subtitle">This will permanently delete your account and all your data. This cannot be undone.</p>
+                <button class="btn-danger" onclick="confirmDeleteAccount()">Delete My Account</button>
+            </div>
+
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="/home" class="nav-item">
+            <div class="nav-icon">⌂</div>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item upload-item">
+            <div class="nav-icon">+</div>
+            <span>Upload</span>
+        </a>
+        <a href="/favourites" class="nav-item">
+            <div class="nav-icon">♡</div>
+            <span>Saved</span>
+        </a>
+        <a href="/account" class="nav-item active">
+            <div class="nav-icon">👤</div>
+            <span>Account</span>
+        </a>
+    </nav>
+
+    <script src="/static/js/account.js"></script>
+</body>
+</html>
